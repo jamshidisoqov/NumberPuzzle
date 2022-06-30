@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <color android:color="#E8B261" />
-        <shape android:shape="rectangle">
-            <corners android:radius="24dp" />
-        </shape>
+    <item android:state_pressed="true" android:drawable="@drawable/select_bar">
+        <color android:color="#80E8B261" />
+        <inset android:visible="true"
+            android:inset="100dp"/>
     </item>
 </selector>

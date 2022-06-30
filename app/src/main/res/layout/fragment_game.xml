@@ -46,12 +46,11 @@
             android:background="@drawable/timer_bg"
             android:elevation="12dp">
 
-            <TextView
+            <Chronometer
                 android:id="@+id/text_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/default_time"
                 android:textColor="#C8B4A2"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -81,7 +80,10 @@
             android:id="@+id/btn_1"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_margin="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
             android:background="@drawable/btn_bg"
             android:text="@string/_1"
             android:textSize="24sp"
