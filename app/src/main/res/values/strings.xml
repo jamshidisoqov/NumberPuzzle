@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Number Puzzle</string>
+    <string name="play">Play</string>
+    <string name="top_result">Top result</string>
+    <string name="result">1.Time 02:23\t\t steps 123</string>
+    <string name="empty">2.\t\t - - - - - -</string>
+    <string name="default_step">Moves:23</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="_10">10</string>
+    <string name="_11">11</string>
+    <string name="_12">12</string>
+    <string name="_13">13</string>
+    <string name="_14">14</string>
+    <string name="_15">15</string>
+    <string name="default_time">03:32</string>
+</resources>

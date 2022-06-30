@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".ui.home.HomeFragment">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="#D8D7D7"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:alpha="0.9"
+        android:background="@drawable/result_bg"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/play_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.7">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="4dp"
+            android:text="@string/top_result"
+            android:textColor="#D1CDCD"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="@string/result"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="@string/empty"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="@string/empty"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="4dp"
+            android:src="@drawable/rank"
+            tools:ignore="ContentDescription" />
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/play_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/play"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/selectable_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/comfortaa_bold"
+            android:text="@string/play"
+            android:textAlignment="center"
+            android:textColor="#663202"
+            android:textSize="18sp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/play_container">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:elevation="12dp"
+            android:src="@drawable/settings"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:elevation="12dp"
+            android:src="@drawable/music"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:elevation="12dp"
+            android:src="@drawable/info"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

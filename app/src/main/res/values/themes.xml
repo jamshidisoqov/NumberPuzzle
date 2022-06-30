@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.NumberPuzzle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#76451D</item>
+        <item name="colorPrimaryVariant">#A85C1D</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#A85C1D</item>
+        <item name="colorSecondaryVariant">#A85C1D</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>
