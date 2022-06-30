@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,7 +26,9 @@ import java.util.Collections;
 
 import uz.gita.numberpuzzle.R;
 import uz.gita.numberpuzzle.models.Coordinate;
+import uz.gita.numberpuzzle.utils.ButtonClickEffect;
 import uz.gita.numberpuzzle.utils.IsSolvingPuzzle;
+import uz.gita.numberpuzzle.utils.MediaPlayerButton;
 
 public class GameFragment extends Fragment {
 
@@ -36,18 +39,26 @@ public class GameFragment extends Fragment {
     private ArrayList<Integer> numbers;
     private Coordinate emptyCoordinate;
     private int score;
+    ImageView btnBack, btnRefresh, btnHome, btnVolume;
+    ButtonClickEffect effect;
     IsSolvingPuzzle isSolvingPuzzle;
+    MediaPlayerButton playerButton;
     private long pauseTime;
     private boolean isStarted;
+    public boolean isPause;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_game, container, false);
         isSolvingPuzzle = new IsSolvingPuzzle();
+        effect = new ButtonClickEffect(getContext());
+        assert getArguments() != null;
+        isPause = getArguments().getBoolean("pause");
         loadViews();
         loadButtons();
         initNumbers();
+        playerButton = MediaPlayerButton.getInstance();
         loadNumbersToButtons();
         startTimer();
         return root;
@@ -58,8 +69,52 @@ public class GameFragment extends Fragment {
         textTime.start();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void loadViews() {
-        root.findViewById(R.id.btn_refresh).setOnClickListener(v -> onRestartGame());
+        btnBack = root.findViewById(R.id.btn_back);
+        btnHome = root.findViewById(R.id.btn_home);
+        btnRefresh = root.findViewById(R.id.btn_refresh);
+        btnVolume = root.findViewById(R.id.btn_volume);
+
+
+        if (isPause) {
+            btnVolume.setImageResource(R.drawable.pause);
+        } else {
+            btnVolume.setImageResource(R.drawable.volume);
+        }
+
+        btnRefresh.setOnTouchListener((v, event) -> {
+            effect.effect(v, event);
+            if (event.getAction() == MotionEvent.ACTION_UP)
+                onRestartGame();
+            return true;
+        });
+        btnBack.setOnTouchListener((v, event) -> {
+            effect.effect(v, event);
+            if (event.getAction() == MotionEvent.ACTION_UP)
+                requireActivity().getSupportFragmentManager().popBackStack();
+            return true;
+        });
+        btnHome.setOnTouchListener((v, event) -> {
+            effect.effect(v, event);
+            if (event.getAction() == MotionEvent.ACTION_UP)
+                requireActivity().getSupportFragmentManager().popBackStack();
+            return true;
+        });
+        btnVolume.setOnTouchListener((v, event) -> {
+            effect.effect(v, event);
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                isPause = !isPause;
+                if (isPause) {
+                    btnVolume.setImageResource(R.drawable.pause);
+                    playerButton.stopPlayer();
+                } else {
+                    btnVolume.setImageResource(R.drawable.music);
+                    playerButton.soundGame(getContext());
+                }
+            }
+            return true;
+        });
         textScore = root.findViewById(R.id.text_score);
         textTime = root.findViewById(R.id.text_time);
     }
@@ -89,9 +144,9 @@ public class GameFragment extends Fragment {
         for (int i = 0; i < count; i++) {
             View view = group.getChildAt(i);
             Button button = (Button) view;
-            button.setOnTouchListener((v, event) -> {
+            button.setOnClickListener(v -> {
+                playerButton.soundButtonClick(getContext());
                 onButtonClick(view);
-                return true;
             });
             int y = i / size;
             int x = i % size;
@@ -149,7 +204,7 @@ public class GameFragment extends Fragment {
         int dY = abs(c.getY() - eY);
         if (dX + dY == 1) {
             score++;
-            textScore.setText(String.valueOf("Moves:"+score));
+            textScore.setText("Moves:" + score);
             buttons[eY][eX].setText(button.getText());
             buttons[eY][eX].setVisibility(View.VISIBLE);
             button.setText("");
@@ -177,7 +232,6 @@ public class GameFragment extends Fragment {
         textTime.stop();
 
 
-
         Dialog dialog = new Dialog(requireContext());
         @SuppressLint("InflateParams")
         View view = LayoutInflater.from(requireContext()).inflate(R.layout.result_dialog, null);
@@ -190,6 +244,7 @@ public class GameFragment extends Fragment {
 
         btnClose.setOnClickListener(v -> {
             onFinishGame();
+
             dialog.dismiss();
         });
 
@@ -207,7 +262,6 @@ public class GameFragment extends Fragment {
 
         tvStep.setText("Moves " + score);
         tvTime.setText("Time " + textTime.getText().toString());
-
         dialog.setContentView(view);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();

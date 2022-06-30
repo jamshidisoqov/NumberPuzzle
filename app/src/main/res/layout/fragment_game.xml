@@ -31,6 +31,7 @@
                 android:id="@+id/text_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 android:layout_gravity="center"
                 android:text="@string/default_step"
                 android:textAlignment="center"
@@ -274,8 +275,8 @@
 
         <ImageView
             android:id="@+id/btn_home"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:elevation="12dp"
             android:src="@drawable/home"
@@ -289,14 +290,14 @@
             android:text="@string/app_name"
             android:textAlignment="center"
             android:textColor="#EEC8A6"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/btn_volume"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:elevation="12dp"
             android:src="@drawable/volume"

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textColor="#D8D7D7"
-        android:textSize="24sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +27,7 @@
         android:background="@drawable/result_bg"
         android:orientation="vertical"
         android:padding="8dp"
+        app:layout_constraintVertical_bias="0.7"
         app:layout_constraintBottom_toTopOf="@+id/play_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,8 +68,8 @@
             android:textSize="18sp" />
 
         <ImageView
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="4dp"
             android:src="@drawable/rank"
@@ -82,9 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/play"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="@drawable/selectable_bg"
+        android:paddingStart="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +95,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginStart="8dp"
-            android:fontFamily="@font/comfortaa_bold"
             android:text="@string/play"
             android:textAlignment="center"
             android:textColor="#663202"
@@ -111,24 +109,27 @@
         app:layout_constraintTop_toBottomOf="@+id/play_container">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/btn_settings"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:elevation="12dp"
             android:src="@drawable/settings"
             tools:ignore="ContentDescription" />
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/btn_music"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:elevation="12dp"
             android:src="@drawable/music"
             tools:ignore="ContentDescription" />
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/btn_info"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:elevation="12dp"
             android:src="@drawable/info"
